@@ -1,5 +1,5 @@
 
-#Short description: knn is a predictive modelling an instance based 
+#Short description: knn is a predictive modelling and instance based 
 #learning algorithm capable to predict unseen data labels outcomes based on 
 #previous values. In this simple example, i will use the iris dataset avalaible
 #in R built in datasets package

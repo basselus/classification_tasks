@@ -245,3 +245,7 @@ merge
 #38         virginica        virginica
 #39         virginica        virginica
 #40         virginica        virginica
+
+#********************************************************
+#STEP 6 : MODEL EVALUATION USING MAE ON NUMERIC VARIABLES
+#********************************************************

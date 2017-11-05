@@ -1,0 +1,56 @@
+---
+title: "Market Basket Analysis with a-priori algorithm"
+output: html_notebook
+---
+Project description:
+
+Transactional data in retail sales is characterized by large volumes from which we can understand purchasing patterns by applying machine learning techniques known as market basket analysis. 
+They allow to assemble knowledge patterns helping to have more insights on the combination of items of any given transaction, (for example the ones that are mostly purchased as well those less purchased together), 
+From a business perspective the goal is to trigger actionable strategies such as optimizing the place of the items sold, better target promotions or decide the best prices to apply in order to better drive retail behavior. 
+In this project we will apply the a-priori, an unsupervized learning algorithm, which proves very effective in identifying association rules or connections in large databases.
+The "Groceries" dataset used is taken from the "arules" R package. 
+For more findings and explanations on this topic you can refer to the following books : 
+1- B. Lanz,: Machine learning in R, Packt publishing, 2015 : 259-284
+2- Hahsler M, HornikK, Reutterer T. Implications of probabilistic data modeling for mining
+association rules. In: Gaul W, Vichi M, Weihs C, ed. Studies in Classification,
+Data Analysis, and Knowledge Organization: from Data and Information
+Analysis to Knowledge Engineering. New York: Springer; 2006:598–605
+
+STEP 1: load and explore the dataset
+
+```{r}
+
+groceries<-read.transactions("groceries.csv", sep = ";")
+
+summary(groceries)
+```
+
+Number of transactions = 9835.
+Number of different possible items in basket = 169.
+Number of purchased items = 43,367.
+Number of items in an avg transaction = 4.409.
+Most frequent item sold = whole milk (2513/9835 =0.25), 25% of the transactions.
+Transaction sizes : example : 1643 transactions contain only 2 items.
+ 
+```{r}
+#View the first 5 transactions function
+
+inspect(groceries[1:5])
+```
+
+```{r}
+#see the the support level of the first 3 items (the proportion of transactions that contain those items) 
+itemFrequency(groceries[,1:3])
+```
+```{r}
+#Visualize item frequency (plot the item support)
+#Items the grocery with a minimum of 10% support (number of items / total number of transactions)
+
+itemFrequencyPlot(groceries, support=0.1)
+
+```
+```{r}
+#Top 10 items by decreasing support
+itemFrequencyPlot(groceries, topN=10)
+```
+
